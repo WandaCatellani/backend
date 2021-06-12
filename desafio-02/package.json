@@ -1,0 +1,16 @@
+{
+  "name": "desafio-02",
+  "version": "1.0.0",
+  "description": "🔹 _operacion_ recibirá dos números y un string con el nombre de la operación a efectuar entre ellos: 'suma' ó 'resta' y cargará dinámicamente un módulo para realizar dicho cálculo.",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
