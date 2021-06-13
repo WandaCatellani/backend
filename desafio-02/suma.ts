@@ -1,6 +1,3 @@
-/* ECMASCRIPT AVANZADO Y TYPESCRIPT - CALCULOS
--------------------------------------------------- */
-
 export default class Suma {
   private num1: number;
   private num2: number;
