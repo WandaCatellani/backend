@@ -1,23 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Resta = /** @class */ (function () {
-    function Resta(num1, num2, operacion) {
+    function Resta(num1, num2, eleccion) {
         this.num1 = num1;
         this.num2 = num2;
-        this.operacion = operacion;
+        this.eleccion = eleccion;
     }
-    Resta.prototype.resultado = function (num1, num2, operacion) {
-        if (num1 && num2) {
-            var resta = num1 - num2;
-            console.log("La resta de " + num1 + " y " + num2 + " es " + resta);
+    Resta.prototype.resultado = function (num1, num2, eleccion) {
+        if (eleccion === "restar") {
+            return num1 - num2;
         }
         else {
-            console.log(operacion + " : Operacion sin exito");
+            console.log("No se puede realizar la operacion " + eleccion);
         }
     };
     return Resta;
 }());
 exports.default = Resta;
-var numResta = new Resta(50, 25, "nada");
-console.log(numResta);
-console.log(Resta.prototype.resultado(10, 8, "w"));

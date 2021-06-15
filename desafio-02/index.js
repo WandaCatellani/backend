@@ -58,34 +58,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function operacion(op) {
     return new Promise(function (res, rej) {
-        // import("./suma");
-        // import("./resta");
         var moduleSuma = "./suma";
         Promise.resolve().then(function () { return __importStar(require(moduleSuma)); });
         var moduleResta = "./resta";
-        Promise.resolve().then(function () { return __importStar(require(moduleResta)); }).then(function (calculoSuma) {
-            var operacionCalculoSuma = new calculoSuma(op.num1, op.num2, op.operacion);
-            res(operacionCalculoSuma.resultado(op.num1, op.num2, op.operacion));
+        Promise.resolve().then(function () { return __importStar(require(moduleResta)); }).then(function (calculos) {
+            var operacionCalculo = new calculos.default(op.num1, op.num2, op.eleccion);
+            res(operacionCalculo.resultado(op.num1, op.num2, op.eleccion));
         });
-        // .then((calculoResta) => {
-        //   let operacionCalculoResta = new calculoResta(
-        //     op.num1,
-        //     op.num2,
-        //     op.operacion
-        //   );
-        //   res(operacionCalculoResta.resultado(op.num1, op.num2, op.operacion));
-        // })
-        // .catch(console.error);
+        //  .catch(console.error)
     });
 }
-var myOperacion = { num1: 10, num2: 7, operacion: "lorem" };
-operacion(myOperacion);
-console.log(operacion);
-function operaciones() {
+var myOperacion = { num1: 10, num2: 7, eleccion: "sumar" };
+function operaciones(num1, num2) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            console.log("soy la funcion operaciones");
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, num1];
+                case 1:
+                    (_a.sent()) - num2;
+                    return [2 /*return*/];
+            }
         });
     });
 }
+console.log(operacion);
+operaciones(8, 3);
+console.log(operaciones);
