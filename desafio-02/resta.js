@@ -7,7 +7,7 @@ var Resta = /** @class */ (function () {
         this.eleccion = eleccion;
     }
     Resta.prototype.resultado = function (num1, num2, eleccion) {
-        if (eleccion === "restar") {
+        if (eleccion === "resta") {
             return num1 - num2;
         }
         else {

@@ -7,7 +7,7 @@ var Suma = /** @class */ (function () {
         this.eleccion = eleccion;
     }
     Suma.prototype.resultado = function (num1, num2, eleccion) {
-        if (eleccion === "sumar") {
+        if (eleccion === "suma") {
             return num1 + num2;
         }
         else {

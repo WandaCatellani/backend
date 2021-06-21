@@ -7,31 +7,80 @@ interface IOperacion {
   eleccion: string;
 }
 
-function operacion(op: IOperacion) {
-  return new Promise((res, rej) => {
-    const moduleSuma = "./suma";
-    import(moduleSuma);
+function operacion(num1: number, num2: number, eleccion: string) {
+  switch (eleccion) {
+    case "suma": {
+      return new Promise((res, rej) => {
+        const moduleSuma = "./suma";
+        import(moduleSuma)
 
-    const moduleResta = "./resta";
-    import(moduleResta).then((calculos) => {
-      let operacionCalculo = new calculos.default(
-        op.num1,
-        op.num2,
-        op.eleccion
+          .then((Suma) => {
+            let operacionCalculo = new Suma(num1, num2);
+
+            res(operacionCalculo.resultado(num1, num2));
+          })
+
+          .catch(() => {
+            rej(console.error);
+          });
+      });
+    }
+
+    case "resta": {
+      return new Promise((res, rej) => {
+        const moduleResta = "./resta";
+        import(moduleResta)
+
+          .then((Resta) => {
+            let operacionCalculo = new Resta(num1, num2);
+
+            res(operacionCalculo.resultado(num1, num2));
+          })
+
+          .catch(() => {
+            rej(console.error);
+          });
+      });
+    }
+
+    default: {
+      console.log(
+        `No se importo ningún archivo y no se realizo ninguna operación`
       );
-      res(operacionCalculo.resultado(op.num1, op.num2, op.eleccion));
-    });
-
-    //  .catch(console.error)
-  });
+    }
+  }
 }
 
-const myOperacion: IOperacion = { num1: 10, num2: 7, eleccion: "sumar" };
-
-async function operaciones(num1: number, num2: number) {
-  (await num1) - num2;
+async function operaciones(operac: Array<IOperacion>): Promise<any> {
+  for (let datos of operac) {
+    await setTimeout(() => {
+      operacion(datos.num1, datos.num2, datos.eleccion);
+    }, 1000);
+  }
 }
 
-console.log(operacion);
-operaciones(8, 3);
-console.log(operaciones);
+async function ingresoDatos(): Promise<any> {
+  const lote1: IOperacion = {
+    num1: 7,
+    num2: 3,
+    eleccion: "suma",
+  };
+
+  const lote2: IOperacion = {
+    num1: 50,
+    num2: 8,
+    eleccion: "resta",
+  };
+
+  const lote3: IOperacion = {
+    num1: 4,
+    num2: 2,
+    eleccion: "dividi",
+  };
+
+  const lotesDePrueba: Array<IOperacion> = [lote1, lote2, lote3];
+
+  await operaciones(lotesDePrueba);
+}
+
+ingresoDatos();

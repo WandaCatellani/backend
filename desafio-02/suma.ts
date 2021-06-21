@@ -10,7 +10,7 @@ export default class Suma {
   }
 
   public resultado(num1: number, num2: number, eleccion: string): any {
-    if (eleccion === "sumar") {
+    if (eleccion === "suma") {
       return num1 + num2;
     } else {
       console.log(`No se puede realizar la operacion ${eleccion}`);

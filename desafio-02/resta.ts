@@ -10,7 +10,7 @@ export default class Resta {
   }
 
   public resultado(num1: number, num2: number, eleccion: string): any {
-    if (eleccion === "restar") {
+    if (eleccion === "resta") {
       return num1 - num2;
     } else {
       console.log(`No se puede realizar la operacion ${eleccion}`);

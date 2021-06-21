@@ -56,31 +56,100 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function operacion(op) {
-    return new Promise(function (res, rej) {
-        var moduleSuma = "./suma";
-        Promise.resolve().then(function () { return __importStar(require(moduleSuma)); });
-        var moduleResta = "./resta";
-        Promise.resolve().then(function () { return __importStar(require(moduleResta)); }).then(function (calculos) {
-            var operacionCalculo = new calculos.default(op.num1, op.num2, op.eleccion);
-            res(operacionCalculo.resultado(op.num1, op.num2, op.eleccion));
-        });
-        //  .catch(console.error)
-    });
+function operacion(num1, num2, eleccion) {
+    switch (eleccion) {
+        case "suma": {
+            return new Promise(function (res, rej) {
+                var moduleSuma = "./suma";
+                Promise.resolve().then(function () { return __importStar(require(moduleSuma)); }).then(function (Suma) {
+                    var operacionCalculo = new Suma(num1, num2);
+                    res(operacionCalculo.resultado(num1, num2));
+                })
+                    .catch(function () {
+                    rej(console.error);
+                });
+            });
+        }
+        case "resta": {
+            return new Promise(function (res, rej) {
+                var moduleResta = "./resta";
+                Promise.resolve().then(function () { return __importStar(require(moduleResta)); }).then(function (Resta) {
+                    var operacionCalculo = new Resta(num1, num2);
+                    res(operacionCalculo.resultado(num1, num2));
+                })
+                    .catch(function () {
+                    rej(console.error);
+                });
+            });
+        }
+        default: {
+            console.log("No se importo ning\u00FAn archivo y no se realizo ninguna operaci\u00F3n");
+        }
+    }
 }
-var myOperacion = { num1: 10, num2: 7, eleccion: "sumar" };
-function operaciones(num1, num2) {
+function operaciones(operac) {
     return __awaiter(this, void 0, void 0, function () {
+        var _loop_1, _i, operac_1, datos;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, num1];
+                case 0:
+                    _loop_1 = function (datos) {
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0: return [4 /*yield*/, setTimeout(function () {
+                                        operacion(datos.num1, datos.num2, datos.eleccion);
+                                    }, 1000)];
+                                case 1:
+                                    _b.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    };
+                    _i = 0, operac_1 = operac;
+                    _a.label = 1;
                 case 1:
-                    (_a.sent()) - num2;
+                    if (!(_i < operac_1.length)) return [3 /*break*/, 4];
+                    datos = operac_1[_i];
+                    return [5 /*yield**/, _loop_1(datos)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3:
+                    _i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function ingresoDatos() {
+    return __awaiter(this, void 0, void 0, function () {
+        var lote1, lote2, lote3, lotesDePrueba;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    lote1 = {
+                        num1: 7,
+                        num2: 3,
+                        eleccion: "suma",
+                    };
+                    lote2 = {
+                        num1: 50,
+                        num2: 8,
+                        eleccion: "resta",
+                    };
+                    lote3 = {
+                        num1: 4,
+                        num2: 2,
+                        eleccion: "dividi",
+                    };
+                    lotesDePrueba = [lote1, lote2, lote3];
+                    return [4 /*yield*/, operaciones(lotesDePrueba)];
+                case 1:
+                    _a.sent();
                     return [2 /*return*/];
             }
         });
     });
 }
-console.log(operacion);
-operaciones(8, 3);
-console.log(operaciones);
+ingresoDatos();
