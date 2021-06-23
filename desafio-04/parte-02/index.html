@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="index.js"></script>
+  <title>Desafío 04 - Parte 02</title>
+</head>
+
+<body>
+  <section style="background: rgb(163, 215, 224);">
+    <h1 style="text-align: center;">Desafío 04 - Parte 02 - Observables</h1>
+    <h2 style="text-align: center;">Wanda Catellani - Backend - Coderhouse</h2>
+  </section>
+
+  <section>
+    <p> > Consigna 2: </p>
+
+    <ul>
+      <li>Realizar un documento web que contenga un elemento input y que a medida de que escribo, se vaya mostrando a su
+        derecha el texto en forma espejada. Utilizar un Observable para realizar esa función.</li>
+      <li>Este comportamiento estará disponible por 30 segundos. Luego de ese tiempo, se realizará la desuscripción
+        automática.</li>
+      <li>Si en el lapso de tiempo activo se escribe 'error', el Observable terminará por error. Si se ingresa
+        'complete',
+        el Observable terminará en forma normal. Indicar por la consola la razón del cierre de la función. </li>
+      <li>Una vez que el Observable no esté más operativo, desregistrar el evento de entrada, deshabilitar la escritura
+        en
+        el input y borrar el resultado de la operación.</li>
+      <li>En lugar de manejar la conversión de datos dentro del Observable, hacerlo utilizando el método pipe y
+        operadores
+        rxjs (a elección)</li>
+    </ul>
+  </section>
+
+  <section>
+    <input class="textInput" type="text" placeholder="Ingrese texto aquí">
+    <span class="spanMirror"></span>
+  </section>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.1.0/rxjs.umd.min.js"
+  integrity="sha512-hsXAcKOZ1PjYtQ2xkvR3SAe9JPzaCiV9rnEhbfCxNYoN0jO+wCpW4TIzUGJixujOdX5ihxLjd1htag3PCFnKPw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="./index.js"></script>
+
+</html>
