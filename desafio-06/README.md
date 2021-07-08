@@ -1,4 +1,4 @@
-# 📝 Consigna 1
+# 📝 Consigna
 
 🔹 Implementar programa que contenga una clase llamada Archivo que reciba el nombre del archivo con el que va a trabajar e implemente los métodos leer, guardar, borrar.
 
