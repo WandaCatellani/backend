@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "name": "desafio-08",
+  "version": "1.0.0",
+  "description": "EXPRESS AVANZADO 01",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
